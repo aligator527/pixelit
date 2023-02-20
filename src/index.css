@@ -35,3 +35,17 @@
   height: 300px;
   max-width: 500px;
 }
+
+#pixelitimg {
+  margin-bottom: 10px;
+  margin-top: 10px;
+  height: 300px;
+  max-width: 500px;
+}
+
+#pixelitcanvas {
+  margin-bottom: 10px;
+  margin-top: 10px;
+  height: 300px;
+  max-width: 500px;
+}

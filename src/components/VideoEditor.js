@@ -92,18 +92,8 @@ function VideoEditor() {
                     />
                 </div>
                 <div className={"slider-div"}>
-                    <h3>Cut Video</h3>
-                    <Slider
-                        disabled={!videoPlayerState}
-                        value={sliderValues}
-                        range={true}
-                        onChange={(values) => {
-                            setSliderValues(values)
-                        }}
-                        tooltip={{
-                            formatter: null,
-                        }}
-                    />
+                    <img id="pixelitimg" alt="non-formated frame" />
+                    <canvas id="pixelitcanvas"></canvas>
                 </div>
                 <div className={"conversion-div"}>
                     <VideoConversionButton
@@ -124,9 +114,18 @@ function VideoEditor() {
                 </div>
                 {gifUrl && (
                     <div className={"gif-div"}>
-                        <h3>Resulting GIF</h3>
-                        <img src={gifUrl} className={"gif"} alt={"GIF file generated in the client side"} />
-                        <a href={gifUrl} download={"test.gif"} className={"ant-btn ant-btn-default"}>
+                        <h3>Result</h3>
+                        <video src={gifUrl} className={"gif"} alt={"Pixeled video generated in the client side"} />
+                        <VideoPlayer
+                            src={gifUrl}
+                            onPlayerChange={(videoPlayer) => {
+                                setVideoPlayer(videoPlayer)
+                            }}
+                            onChange={(videoPlayerState) => {
+                                setVideoPlayerState(videoPlayerState)
+                            }}
+                        />
+                        <a href={gifUrl} download={"out.mp4"} className={"ant-btn ant-btn-default"}>
                             Download
                         </a>
                     </div>
